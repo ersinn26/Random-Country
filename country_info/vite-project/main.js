@@ -1,7 +1,6 @@
 
 import "./style.css";
 import { countryName } from "./src/getCountry";
-import { displayCountry } from "./src/displayCountry";
 
 const app = document.querySelector("#app");
 
@@ -11,17 +10,22 @@ const input = document.querySelector("form input");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault(); //! form eventinin tüm dogal davranilari disable eder.
-  getCountryData()
+ 
+  if (!input.value.trim()) {
+    alert("Input must be entered");
+  } else {
+    countryName(input.value);
+  }
+
   e.target.reset();
 });
 
+// const getCountryData = () => {
+//   const input = document.querySelector("form input").value;
 
-
-const getCountryData = () => {
-  const input = document.querySelector("form input").value
-  if (!input.trim()) {
-    alert("Input must be entered")
-  } else {
-    countryName(input)
-  }
-}
+//   if (!input.trim()) {
+//     alert("Input must be entered");
+//   } else {
+//     countryName(input);
+//   }
+// };
